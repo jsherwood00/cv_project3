@@ -1,0 +1,11 @@
+body{
+    background-color: #F0F1F1; 
+}
+
+a:hover { color: #F0F1F1; }
+
+.home{
+    padding-top:300px;
+    text-align:center;
+    font-size:150px;
+}

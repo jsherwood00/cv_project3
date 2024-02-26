@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Project 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="fish">
+        <video width="50%" height="50%" autoplay muted loop>
+            <source src="assets/fish.mp4">
+        </video>
+    </div>
+    <div class="citations">
+        <a href="https://mixkit.co/free-stock-video/a-couple-of-gold-fish-swimming-8491/">source</a>
+    </div>
+    <div class="head">
+        1. Introduction
+    </div>  
+    <div class="main">
+        The task presented was to use object recognition to count something over time. I think fish swimming look cool,
+        and I was interested in seeing whether the overlapping swimming, where sometimes part of the second fish is obscured by the first,
+        affects the labelling. 
+    </div>  
+    <div class="main">
+        I also remembered that YOLO performs better with high quality images with large objects, so I thought
+        the model would perform well on the set of images of these fish swimming: 2 objects taking up over 1 of the 7x7 sections most
+        of the time, and several when fully pictured, and in reasonable quality of 720p.
+    </div>
+    <div class="head">
+        2. Method
+    </div>  
+    <div class="main">
+        I used the <a href="https://github.com/WongKinYiu/yolov7">YoloV7</a> model because I found a <a href="https://inside-machinelearning.com/en/use-yolov7/">tutorial</a> on it that was intuitive to me, and I could model my code on this.
+        Currently, YoloV8 is the latest, state-of-the-art model, but YoloV7 is <a href="https://www.stereolabs.com/blog/performance-of-yolo-v5-v7-and-v8">comparable</a>.
+    </div>  
+    <div class="head">
+        3. Results
+    </div>  
+    <div class="results">
+        <a href="graphs.html">Graphs</a>
+        <video width="50%" height="50%" autoplay muted loop>
+            <source src="assets/bird.mov" type="video/mp4">
+        </video>
+    </div>
+    <div class="head">
+        4. Analysis of Results
+    </div>  
+    <div class="main">
+        I learned that fish aren't a priority for training data in the YOLO series, including the YoloV7 model. The model was very confident
+        that the fish was a bird, and consistently. This is strange, and now I wonder: why mark it as a bird instead of not marking it at all?
+        Focusing on the boxing, the overlap did cause problems for the dual-identification success, even at low levels of overlap.
+        Finally, more than half of the fish being out-of-bounds resulted in no identification, most of the time.
+        Overall, I had a lot of fun with this project and learned about some of the limitations of YOLO.
+    </div>  
+    <div class="head">
+        5. Analysis of Vision Algorithms
+    </div>  
+    <div class="main">
+        The model didn't identify the fish as fish, or consistently give the correct quantification.
+        I didn't try to optimize the misidentification because this would involve training the model, and I don't have the knowledge
+        or compute power to do this. I could 'throw out' images where only one box was provided, but this would result in very few images
+        from the original video being included, and wouldn't be useful. I didn't choose another video because I wanted to be honest about my results,
+        but if it is considered preferable to choose input data that fit the model in the future, please let me know and I will be happy to do this.
+    </div>  
+
+</body>
+</html>
